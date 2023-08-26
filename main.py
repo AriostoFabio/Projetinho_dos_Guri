@@ -3,8 +3,6 @@ import tkinter as tk
 
 from tkinter import messagebox
 
-con = sqlite3.connect("tutorial.db")
-
 # Conectando ao banco de dados (será criado se não existir)
 con = sqlite3.connect('usuarios.db')
 cursor = con.cursor()
@@ -21,12 +19,6 @@ cursor.execute('''
     )
 ''')
 
-# Criando um cursor para executar comandos SQL
-
-# Inserindo alguns registros na tabela
-cursor.execute("INSERT INTO usuarios (nome, idade) VALUES('joao', 29)")
-cursor.execute("INSERT INTO usuarios (nome, idade) VALUES('shakira', 23)")
-
 # Salvando as alterações e fechando a conexão
 con.commit()
 
@@ -35,17 +27,18 @@ cursor.execute('SELECT * FROM usuarios')
 for row in cursor.fetchall():
     print(row)
 
-def check_credentials():
-    name = name_entry.get()
-    senha = pass_entry.get()
+#test local de login
+# def check_credentials():
+#     name = name_entry.get()
+#     senha = pass_entry.get()
     
-    adm_name = 'Fabio'
-    adm_pass = '1234'
+#     adm_name = 'Fabio'
+#     adm_pass = '1234'
     
-    if name == adm_name and senha == adm_pass:
-        messagebox.showinfo('Sucesso', 'Acesso liberado!')
-    else:
-        messagebox.showwarning('Erro', 'Acesso negado BITCH!')
+#     if name == adm_name and senha == adm_pass:
+#         messagebox.showinfo('Sucesso', 'Acesso liberado!')
+#     else:
+#         messagebox.showwarning('Erro', 'Acesso negado!')
 
 # Criar janela principal
 root = tk.Tk()
