@@ -1,5 +1,4 @@
 import sqlite3
-import sqlite3
 import tkinter as tk
 
 from tkinter import messagebox
@@ -14,8 +13,11 @@ cursor = con.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS usuarios (
         id INTEGER PRIMARY KEY,
+        id_usuario INTEGER,
         nome TEXT,
-        idade INTEGER
+        senha TEXT,
+        email TEXT,
+        FOREIGN KEY (id_usuario) REFERENCES usuarios (id)
     )
 ''')
 
