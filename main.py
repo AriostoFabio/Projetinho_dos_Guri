@@ -1,9 +1,37 @@
 import sqlite3
+import sqlite3
 import tkinter as tk
 
 from tkinter import messagebox
 
 con = sqlite3.connect("tutorial.db")
+
+# Conectando ao banco de dados (será criado se não existir)
+con = sqlite3.connect('usuarios.db')
+cursor = con.cursor()
+
+# Criando a tabela 'usuarios'
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id INTEGER PRIMARY KEY,
+        nome TEXT,
+        idade INTEGER
+    )
+''')
+
+# Criando um cursor para executar comandos SQL
+
+# Inserindo alguns registros na tabela
+cursor.execute("INSERT INTO usuarios (nome, idade) VALUES('joao', 29)")
+cursor.execute("INSERT INTO usuarios (nome, idade) VALUES('shakira', 23)")
+
+# Salvando as alterações e fechando a conexão
+con.commit()
+
+# Fazendo uma consulta simples e imprimindo os resultados
+cursor.execute('SELECT * FROM usuarios')
+for row in cursor.fetchall():
+    print(row)
 
 def check_credentials():
     name = name_entry.get()
@@ -45,3 +73,6 @@ login_button = tk.Button(center_frame, text="Login", command=check_credentials)
 login_button.pack(pady=10)
 
 root.mainloop()
+
+# Fechando a conexão
+con.close()
