@@ -28,17 +28,17 @@ for row in cursor.fetchall():
     print(row)
 
 #test local de login
-# def check_credentials():
-#     name = name_entry.get()
-#     senha = pass_entry.get()
+def check_credentials():
+    name = name_entry.get()
+    senha = pass_entry.get()
     
-#     adm_name = 'Fabio'
-#     adm_pass = '1234'
+    adm_name = 'Fabio'
+    adm_pass = '1234'
     
-#     if name == adm_name and senha == adm_pass:
-#         messagebox.showinfo('Sucesso', 'Acesso liberado!')
-#     else:
-#         messagebox.showwarning('Erro', 'Acesso negado!')
+    if name == adm_name and senha == adm_pass:
+        messagebox.showinfo('Sucesso', 'Acesso liberado!')
+    else:
+        messagebox.showwarning('Erro', 'Acesso negado!')
 
 # Criar janela principal
 root = tk.Tk()
